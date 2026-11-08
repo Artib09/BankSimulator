@@ -2,11 +2,19 @@ import datetime
 
 
 class TransactionRecord:
-    def __init__(self, transaction_type: str, amount: int, description: str, balance_after: int):
+    id: int
+    type: str
+    amount: int
+    description: str
+    balance_after: int
+    time: datetime.datetime
+
+    def __init__(self, id: int, transaction_type: str, amount: int, description: str, balance_after: int):
+        self.id = id
         self.type = transaction_type
         self.amount = amount
-        self.balance = balance_after
         self.description = description
+        self.balance_after = balance_after
         self.time = datetime.datetime.now()
 
     def __str__(self):

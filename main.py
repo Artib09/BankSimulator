@@ -22,7 +22,7 @@ def main():
         print(account_tom.balance)
         print(account_alex.balance)
 
-        trans = TransactionRecord("some type", 15, "dsc", 1555)
+        trans = TransactionRecord(3, "some type", 15, "dsc", 1555)
         print(trans)
 
         print("\n \n history Alex")
