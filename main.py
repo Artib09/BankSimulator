@@ -2,7 +2,7 @@ from account import Account
 from transaction_record import TransactionRecord
 
 
-def main():
+def main() -> None:
     try:
         account_alex = Account("Alex")
         print(account_alex.balance)
@@ -26,9 +26,8 @@ def main():
         print(trans)
 
         print("\n \n history Alex")
-        print(account_alex.history)
-        print("\n \n history Tom")
-        print(account_tom.history)
+        for record in account_alex.history:
+            print(record)
 
     except ValueError as ex:
         print(ex)
