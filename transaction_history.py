@@ -15,10 +15,10 @@ class TransactionHistory:
     def snapshot(self) -> tuple[TransactionRecord, ...]:
         return tuple(self._transactions)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self._transactions)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "\n".join(
             str(transaction)
             for transaction in self._transactions

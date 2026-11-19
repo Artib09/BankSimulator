@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from threading import Lock
 from typing import ClassVar
 
@@ -6,7 +8,7 @@ from transaction_history import TransactionHistory
 
 
 class Account:
-    """Bank account with synchronized balance and transaction history. Stores account balance as amount of cents as integer."""
+    """Bank account with synchronized balance and transaction history. Stores account balance as amount of grosze as integer."""
     _id_counter: ClassVar[int] = 0
     _transactions_id_counter: ClassVar[int] = 0
     _counter_lock = Lock()
@@ -49,7 +51,7 @@ class Account:
             return transaction_id
 
     @staticmethod
-    def _validate_amount(amount) -> None:
+    def _validate_amount(amount: int) -> None:
         if type(amount) is not int:
             raise TypeError("amount must be an integer number of cents")
 
