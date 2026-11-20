@@ -1,4 +1,5 @@
 from __future__ import annotations
+from logging import measure_time
 
 from threading import Lock
 from typing import ClassVar
@@ -75,6 +76,7 @@ class Account:
         if amount > self._balance:
             raise ValueError("insufficient funds")
 
+    @measure_time
     def withdraw(self, amount: int, description: str) -> None:
         self._validate_amount(amount)
         self._validate_description(description)
@@ -95,6 +97,7 @@ class Account:
             self._history.append(record)
             self._balance = new_balance
 
+    @measure_time
     def deposit(self, amount: int, description: str) -> None:
         self._validate_amount(amount)
         self._validate_description(description)
@@ -113,6 +116,7 @@ class Account:
             self._history.append(record)
             self._balance = new_balance
 
+    @measure_time
     def transfer(self, amount: int, recipient: Account, description: str) -> None:
         # validation
         self._validate_amount(amount)
