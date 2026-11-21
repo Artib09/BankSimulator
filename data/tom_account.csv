@@ -1,0 +1,16 @@
+request_id,client_id,account_id,operation,amount,description
+req-016,client-tom,1,deposit,320000,Salary for October
+req-017,client-tom,1,withdraw,150000,Rent
+req-018,client-tom,1,withdraw,9900,Payment for invoice INV-2026-0108
+req-019,client-tom,1,withdraw,2599,Online order ORD-2001
+req-020,client-tom,1,withdraw,250000,Laptop purchase
+req-021,client-tom,1,withdraw,5000,Cash withdrawal
+req-022,client-tom,1,deposit,15000,Payment received for invoice INV-2026-0215
+req-023,client-tom,1,withdraw,11250,Groceries
+req-024,client-tom,1,withdraw,4800,Online order ORD-2019
+req-025,client-tom,1,deposit,320000,Salary for November
+req-026,client-tom,1,withdraw,18900,Payment for invoice INV-2026-0122
+req-027,client-tom,1,withdraw,-500,Negative amount example
+req-028,client-tom,1,withdraw,3750,Online order ORD-2044
+req-029,client-tom,1,withdraw,6200,Groceries
+req-030,client-tom,1,deposit,2599,Refund for order ORD-2001

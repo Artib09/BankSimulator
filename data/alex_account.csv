@@ -1,0 +1,16 @@
+request_id,client_id,account_id,operation,amount,description
+req-001,client-alex,0,deposit,500000,Salary for October
+req-002,client-alex,0,withdraw,180000,Rent
+req-003,client-alex,0,withdraw,12999,Payment for invoice INV-2026-0012
+req-004,client-alex,0,withdraw,4550,Online order ORD-1042
+req-005,client-alex,0,withdraw,8020,Groceries
+req-006,client-alex,0,deposit,4550,Refund for order ORD-1042
+req-007,client-alex,0,withdraw,400000,Car purchase
+req-008,client-alex,0,withdraw,25000,Payment for invoice INV-2026-0031
+req-009,client-alex,0,deposit,0,Empty deposit
+req-010,client-alex,0,withdraw,20000,Cash withdrawal
+req-011,client-alex,0,withdraw,7999,Online order ORD-1077
+req-012,client-alex,0,deposit,500000,Salary for November
+req-013,client-alex,0,withdraw,31500,Payment for invoice INV-2026-0047
+req-014,client-alex,0,withdraw,6340,Groceries
+req-015,client-alex,0,withdraw,15000,Online order ORD-1103
