@@ -1,6 +1,30 @@
 from account import Account
 from transaction_record import TransactionRecord
+import logging
+from pathlib import Path
 
+
+def configure_logging() -> None:
+    """Configure console and file logging."""
+
+    logs_directory = Path(__file__).resolve().parent / "logs"
+    logs_directory.mkdir(parents=True, exist_ok=True)
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format=(
+            "%(asctime)s | %(levelname)s | "
+            "%(threadName)s | %(message)s"
+        ),
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(
+                logs_directory / "bank_simulator.log",
+                encoding="utf-8",
+                mode="w",
+            ),
+        ],
+    )
 
 def main() -> None:
     try:
@@ -32,5 +56,6 @@ def main() -> None:
     except ValueError as ex:
         print(ex)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    configure_logging()
     main()
