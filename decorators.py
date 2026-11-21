@@ -91,6 +91,9 @@ def log_account_operation(method: Callable) -> Callable:
 
         try:
             result = method(self, *args, **kwargs)
+        except ValueError:
+            # Error from account operations
+            raise
         except Exception:
             logger.exception(
                 "Failed: %s | account_id=%s",

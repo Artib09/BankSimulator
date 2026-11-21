@@ -1,5 +1,7 @@
 from account import Account
-from transaction_record import TransactionRecord
+from requests.request_parser import RequestParser
+from requests.request_processor import RequestProcessor
+
 import logging
 from pathlib import Path
 
@@ -27,34 +29,47 @@ def configure_logging() -> None:
     )
 
 def main() -> None:
+    logging.info("Starting bank simulation")
+
+    account_alex = Account("Alex")
+    account_tom = Account("Tom")
+
+    accounts = {
+        account_alex.id: account_alex,
+        account_tom.id: account_tom,
+    }
+
+    for account in accounts.values():
+        print(f"Account {account.id}: {account.owner}")
+
+    parser = RequestParser(
+        Path(__file__).resolve().parent / "data" / "requests.csv"
+    )
+    processor = RequestProcessor(accounts)
+
     try:
-        account_alex = Account("Alex")
-        print(account_alex.balance)
-        account_alex.deposit(100, "depo alex")
-        print(account_alex.balance)
-        account_alex.withdraw(90, "wdr alex")
-        print(account_alex.balance)
+        for request in parser.parse():
+            try:
+                processor.process(request)
+            except ValueError as error:
+                logging.warning(
+                    "Rejected request=%s | %s",
+                    request.request_id,
+                    error,
+                )
+            else:
+                logging.info(
+                    "Completed request=%s",
+                    request.request_id,
+                )
+    except (OSError, ValueError) as error:
+        logging.error("Cannot finish reading requests: %s", error)
 
-        account_tom = Account("Tom")
-        print(account_tom.balance)
-        account_tom.deposit(1111, "depo tom")
-        print(account_tom.balance)
-        account_tom.withdraw(90, "wdr tom")
-        print(account_tom.balance)
+    for account in accounts.values():
+        print(f"\n{account.owner}: balance={account.balance}")
 
-        account_tom.transfer(300, account_alex, "buy sth")
-        print(account_tom.balance)
-        print(account_alex.balance)
-
-        trans = TransactionRecord(3, "some type", 15, "dsc", 1555)
-        print(trans)
-
-        print("\n \n history Alex")
-        for record in account_alex.history:
-            print(record)
-
-    except ValueError as ex:
-        print(ex)
+        for transaction in account.history:
+            print(transaction)
 
 if __name__ == "__main__":
     configure_logging()

@@ -1,0 +1,6 @@
+request_id,client_id,account_id,operation,amount,description
+req-001,client-alex,0,deposit,10000,Initial deposit
+req-002,client-tom,1,deposit,5000,Initial deposit
+req-003,client-alex,0,withdraw,2500,Shopping
+req-004,client-tom,1,withdraw,9000,Insufficient funds example
+req-005,client-tom,1,withdraw,1000,Another withdrawal
